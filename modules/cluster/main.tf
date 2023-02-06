@@ -9,6 +9,7 @@ data "template_file" "my_template_file" {
     vars = {
         application_name = var.application_name
         ecr_url = var.ecr_url
+        image_tag = var.image_tag
     }
 }
 
