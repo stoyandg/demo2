@@ -21,6 +21,7 @@ module "cluster" {
   both_private_subnets_id = module.networking.both_private_subnets_id
   id_vpc = module.networking.id_vpc
   ecr_url = module.ecr.ecr_url
+  image_tag = var.image_tag
 }
 
 module "ecr" {
