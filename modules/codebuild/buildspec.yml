@@ -16,6 +16,8 @@ phases:
 
   build:
     commands:
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - export TAG="${IMAGE_TAG}"
       - ./build-and-push.sh
   
   post_build:
