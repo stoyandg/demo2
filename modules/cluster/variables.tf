@@ -67,3 +67,7 @@ variable "application_port" {
 variable "ecr_url" {
     type = string
 }
+
+variable "image_tag" {
+  type = string
+}
