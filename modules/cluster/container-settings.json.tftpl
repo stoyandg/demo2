@@ -1,0 +1,14 @@
+[
+    {
+        "name": "${application_name}-Application",
+        "image": "${ecr_url}:latest",
+        "essential": true,
+        "portMappings": [
+            {
+                "containerPort": 5000,
+                "hostPort": 5000
+            }
+        ]
+    }
+]
+
