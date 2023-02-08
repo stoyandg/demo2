@@ -8,3 +8,5 @@ terraform {
     region         = "eu-central-1"
   }
 }
+
+## Terraform backend ##
