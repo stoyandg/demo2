@@ -4,8 +4,6 @@ REPOSITORY_REGION ?= eu-central-1
 APP_NAME ?= 2nd-demo-app
 REPO_NAME = $(REGISTRY_ID).dkr.ecr.$(REPOSITORY_REGION).amazonaws.com/${APP_NAME}
 
-### 	docker tag ${APP_NAME}:$(TAG) $(REPO_NAME):$(TAG)
-
 .PHONY: build
 build:
 	$(MAKE) docker-login
