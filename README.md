@@ -1,6 +1,6 @@
 ## Pipeline for deployment of a basic Flask App using AWS
 
-Provisioning is done by Terragrunt & Terraform. Services are provided by Amazon Web Services.
+> Provisioning is done by Terragrunt & Terraform. Services are provided by Amazon Web Services.
 
 Versions of the software used:
 
@@ -20,6 +20,37 @@ Versions of the software used:
   - ./initial-build - Module for the initial building and pushing of the Docker image to the ECR.
   - ./networking - Module for the networking infrastructure (VPC, subnets, gateways, etc.)
   - ./sg - Module for the Security Groups
+
+## How to Deploy
+1. Install the required software and setup AWS CLI access.
+2. Clone the repository and generate a GitHub Personal Access Token
+3. Create a terraform.tfvars file and place it in the /modules/codebuild directory containing:
+
+```
+github_token = "TOKEN_HERE"
+```
+
+4. Open the file variables.tf in the /modules/initial-build directory and change the default value to the absolute path to the application folder.
+
+```
+variable "working_directory" {
+    description = "This is the directory in which we execute the make command"
+    type = string
+    default = "ABSOLUTE_PATH_TO_APPLICATION_FOLDER"
+}
+```
+5. Execute the following commands:
+  ```
+  terragrunt init
+  ```
+  Then:
+  ```
+  terragrunt plan
+  ```
+  And finally:
+  ```
+  terragrunt apply
+  ```
 
 ## Root Overview
 
