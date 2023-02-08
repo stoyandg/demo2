@@ -12,3 +12,5 @@ remote_state {
     dynamodb_table = "demo2_terraform_state_dynamodb"
   }
 }
+
+## REMOTE STATE MAINTAINED BY TERRAGRUNT ##
