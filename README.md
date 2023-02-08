@@ -9,6 +9,17 @@ Versions of the software used:
   Terragrunt - v.0.42.5
   AWS CLI - 2.9.2
 
+## Files and Folders
+- /root - Main Directory
+- /application - Application directory
+  - ./templates - Directory for the front-end of the application (index.html)
+- /modules - Terraform modules directory
+  - ./cluster - Module for the ECS cluster and the application load balancer.
+  - ./codebuild - Module for the Codebuild project
+  - ./ecr - Module for the creation of the Elastic Container Registry
+  - ./initial-build - Module for the initial building and pushing of the Docker image to the ECR.
+  - ./networking - Module for the networking infrastructure (VPC, subnets, gateways, etc.)
+  - ./sg - Module for the Security Groups
 
 ## Root Overview
 
@@ -236,3 +247,7 @@ Versions of the software used:
 | <a name="output_vpc_codebuild_security_group_ids"></a> [vpc\_codebuild\_security\_group\_ids](#output\_vpc\_codebuild\_security\_group\_ids) | n/a |
 | <a name="output_vpc_private_security_group_ids"></a> [vpc\_private\_security\_group\_ids](#output\_vpc\_private\_security\_group\_ids) | n/a |
 | <a name="output_vpc_public_security_group_ids"></a> [vpc\_public\_security\_group\_ids](#output\_vpc\_public\_security\_group\_ids) | n/a |
+
+
+ 
+
