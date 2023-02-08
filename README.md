@@ -9,6 +9,10 @@ Versions of the software used:
   Terragrunt - v.0.42.5
   AWS CLI - 2.9.2
 
+## Infrastructure Scheme of the project
+
+--
+
 ## Files and Folders
 - /root - Main Directory
 - /application - Application directory
