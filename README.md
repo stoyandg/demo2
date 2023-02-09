@@ -45,7 +45,17 @@ Versions of the software used:
 
 ## How does it work?
 
-
+1. Terragrunt maintains the backend in an S3 bucket.
+2. Provisioning of an ECR, building and pushing the docker image locally to the ECR.
+3. Networking and security infrastructure provisioning:
+  - VPC, 2 private and 2 public subnets, IG, 2 NATs, 2 EIPs, RTs and RT associations
+  - 3 Security Groups (1 for public subnet - allowing incoming traffic on port 80, 443 and 5000 and all outgoing traffic), (1 for private subnet - allowing incoming traffic only from instances that are in the public subnet, and all outgoing traffic) and (1 for CodeBuild that allows connection between VPC objects and the CodeBuild container)
+4. Provisioning an ECS cluster with 1 service (that is connected to an ALB), 1 task definition and 2 tasks (in the private subnets) that run ECR's image on port 5000.
+5. Finally creating a CodeBuild project that triggers a build whenever a "push" event occurs in the GitHub repository.
+6. The build's three phases are:
+  - Pre-Build - Giving execute permissions to bash scripts and executing the pre-build bash script which installs Terraform on the CodeBuild container.
+  - Build - Exporting the image tag as an environment variable which has the value of the $CODEBUILD_RESOLVED_SOURCE_VERSION and then executing the build and push script which builds and pushes the application image to the ECR.
+  - Post-Build - Executing the deploy script which initiates, plans and applies terraform's cluster module while utilizing the backend.tf so it doesn't create resources that already exist. And finally it executes the status script which shows whether the build has failed or the deployment has been successful.
 
 ## How to Deploy
 1. Install the required software and setup AWS CLI access.
