@@ -11,7 +11,7 @@ Versions of the software used:
 
 ## Infrastructure Scheme of the project
 
---
+![schema drawio](https://user-images.githubusercontent.com/98672346/217792562-04b9ac22-ad0e-4b38-8593-8a42fa9898cc.png)
 
 ## Files and Folders
 - /root - Main Directory
