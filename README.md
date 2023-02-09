@@ -2,7 +2,24 @@
 
 > Provisioning is done by Terragrunt & Terraform. Services are provided by Amazon Web Services.
 
-This project is about creating a Continuous Integration and Continuous Delivery Pipeline while using resources provided by the Amazon Web Services. The project consists of a basic flask application that is served on port 5000 and Terraform/Terragrunt provisioning and configuration files. The infrastructure consists of two Availability Zones in the EU-Central region. To create this pipeline, we are using a VPC, internet gateway, 2 public and 2 private subnets (with NAT gateways), 2 elastic IPs, 3 security groups (for the public subnet, for the private subnet and for the CodeBuild resource), ECR, ECS cluster with a service, task definition and two tasks (both in private subnets). We are utilizing a Makefile with PHONY to perform the initial-build of the application and to push it to the ECR.
+This project is about creating a Continuous Integration and Continuous Delivery Pipeline while using resources provided by the Amazon Web Services. 
+The project consists of:
+ - a basic flask application that is served on port 5000
+ - Terraform/Terragrunt provisioning and configuration files
+
+The infrastructure consists of :
+- 2 Availability Zones in the EU-Central region
+- 1 VPC 
+- 1 Internet Gateway 
+- 2 public and 2 private subnets 
+- 2 NAT gateways
+- 2 elastic IPs
+- 3 security groups (for the public subnet, for the private subnet and for the CodeBuild resource)
+- Elastic Container Registry
+- ECS cluster with a service, task definition and two tasks (both in private subnets)
+- Application Load Balancer
+- CodeBuild project
+
 Versions of the software used:
 
   Ubuntu - 22.04
@@ -25,6 +42,10 @@ Versions of the software used:
   - ./initial-build - Module for the initial building and pushing of the Docker image to the ECR.
   - ./networking - Module for the networking infrastructure (VPC, subnets, gateways, etc.)
   - ./sg - Module for the Security Groups
+
+## How does it work?
+
+
 
 ## How to Deploy
 1. Install the required software and setup AWS CLI access.
