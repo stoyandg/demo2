@@ -1,7 +1,8 @@
-## Pipeline for deployment of a basic Flask App using AWS
+## CI/CD Pipeline for deployment of a basic Flask App using AWS
 
 > Provisioning is done by Terragrunt & Terraform. Services are provided by Amazon Web Services.
 
+This project is about creating a Continuous Integration and Continuous Delivery Pipeline while using resources provided by the Amazon Web Services. The project consists of a basic flask application that is served on port 5000 and Terraform/Terragrunt provisioning and configuration files. The infrastructure consists of two Availability Zones in the EU-Central region. To create this pipeline, we are using a VPC, internet gateway, 2 public and 2 private subnets (with NAT gateways), 2 elastic IPs, 3 security groups (for the public subnet, for the private subnet and for the CodeBuild resource), ECR, ECS cluster with a service, task definition and two tasks (both in private subnets). We are utilizing a Makefile with PHONY to perform the initial-build of the application and to push it to the ECR.
 Versions of the software used:
 
   Ubuntu - 22.04
